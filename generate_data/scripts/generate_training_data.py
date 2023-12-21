@@ -451,7 +451,6 @@ EXAMPLES = [
     }
 ]
 
-# TODO: CREATE DOTFILE WITH OPENAI KEY
 OpenAI.api_key = os.environ["OPENAI_API_KEY"]
 
 def build_prompt(example: Dict) -> str:
