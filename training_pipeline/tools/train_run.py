@@ -1,4 +1,16 @@
 from beam import App, Runtime, Image, Volume, VolumeType
+from pathlib import Path
+
+import fire
+from beam import App, Image, Runtime, Volume, VolumeType
+
+# from training_pipeline.training_pipeline import configs, 
+
+from training_pipeline import configs
+from training_pipeline import utils
+
+
+
 
 training_app = App(
     name="train_qa_ray",
@@ -47,3 +59,38 @@ def train(
         logging_config_path (str, optional): Path to the logging configuration file. Defaults to "logging.yaml".
         model_cache_dir (str, optional): Directory where the trained model will be cached. Defaults to None.
     """
+
+    import logging
+
+    from training_pipeline import initalize
+
+    initalize(logging_config_path=logging_config_path, env_file_path=env_file_path)
+
+    
+    from training_pipeline.api import TrainingAPI
+
+    logger = logging.getLogger(__name__)
+
+    logger.info("#" * 100)
+    utils.log_available_gpu_memory()
+    utils.log_available_ram()
+    logger.info("#" * 100)
+
+
+    config_file = Path(config_file) 
+    output_dir = Path(output_dir)
+    root_dataset_dir = Path(dataset_dir)
+    model_cache_dir = Path(model_cache_dir) if model_cache_dir else None
+
+    training_config = configs.TrainingConfig.from_yaml(config_file, output_dir)
+    training_api = TrainingAPI.from_config(
+        config=training_config,
+        root_dataset_dir=root_dataset_dir,
+        model_cache_dir=model_cache_dir,
+    )
+
+    training_api.train()
+
+
+if __name__ == "__main__":
+    fire.Fire(train)
