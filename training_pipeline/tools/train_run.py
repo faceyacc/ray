@@ -4,7 +4,7 @@ from pathlib import Path
 import fire
 from beam import App, Image, Runtime, Volume, VolumeType
 
-# from training_pipeline.training_pipeline import configs, 
+
 
 from training_pipeline import configs
 from training_pipeline import utils
@@ -20,11 +20,11 @@ training_app = App(
         gpu="A10G",
         image=Image(
             python_version="python3.10", 
-            python_package="requirements.txt"
+            python_packages="requirements.txt"
         ),
     ),
     volumes=[
-        Volume(path="./qa_dataset_ray", name="qa_dataset_ray"),
+        Volume(path="./ray_qa_dataset", name="ray_qa_dataset"),
         Volume(
             path="./output",
             name="train_qa_ray_output",
@@ -62,9 +62,10 @@ def train(
 
     import logging
 
-    from training_pipeline import initalize
+    from training_pipeline import initialize
+    
 
-    initalize(logging_config_path=logging_config_path, env_file_path=env_file_path)
+    initialize(logging_config_path=logging_config_path, env_file_path=env_file_path)
 
     
     from training_pipeline.api import TrainingAPI

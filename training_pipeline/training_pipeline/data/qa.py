@@ -7,7 +7,6 @@ from unstructured.cleaners.core import clean_extra_whitespace, group_broken_para
 
 from training_pipeline.constants import Scope
 from training_pipeline.data.utils import load_json
-from training_pipeline.training_pipeline.utils import load_json
 from training_pipeline.prompt_templates.prompter import get_llm_template
 
 

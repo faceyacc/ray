@@ -3,7 +3,7 @@ name = "training_pipeline"
 version = "0.1.0"
 description = ""
 authors = ["Ty <justfacey@gmail.com>"]
-# readme = "README.md"
+
 
 
 [tool.poetry.dependencies]
