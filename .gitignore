@@ -1,9 +1,8 @@
-set_env_variables.sh
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+.ruff_cache/
 
 # C extensions
 *.so
@@ -67,7 +66,7 @@ db.sqlite3-journal
 instance/
 .webassets-cache
 
-# Scrapy stuff:
+# Scrapy stuff:import comet_ml
 .scrapy
 
 # Sphinx documentation
@@ -160,3 +159,30 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+# Artifacts
+results/
+output*/
+model_cache/
+output*
+user_data.sh
+
+set_env_variables.sh
+logs/
+.DS_Store
+gradio_cached_examples
+trust_policy.json
