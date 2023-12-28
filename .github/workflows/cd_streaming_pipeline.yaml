@@ -41,8 +41,8 @@ jobs:
           COMMIT_TAG: ${{ env.REPOSITORY_NAME }}:commit-${{ github.sha }}
           LATEST_TAG: ${{ env.REPOSITORY_NAME }}:latest
         with:
-          context: ./modules/streaming_pipeline
-          file: ./modules/streaming_pipeline/deploy/Dockerfile
+          context: ./streaming_pipeline
+          file: ./streaming_pipeline/deploy/Dockerfile
           target: release
           tags: |
             ${{ steps.login-ecr.outputs.registry }}/${{ env.COMMIT_TAG }}
@@ -71,12 +71,12 @@ jobs:
 
     - name: Remove current deployment
       id: undeploy_aws
-      working-directory: ./modules/streaming_pipeline
+      working-directory: ./streaming_pipeline
       run: make undeploy_aws
 
     - name: Deploy to AWS
       id: deploy_aws
-      working-directory: ./modules/streaming_pipeline
+      working-directory: ./streaming_pipeline
       run: make deploy_aws
       env:
         ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
