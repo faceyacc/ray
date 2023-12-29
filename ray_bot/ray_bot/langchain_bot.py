@@ -7,16 +7,16 @@ from langchain import chains
 from langchain.memory import ConversationBufferWindowMemory
 
 from ray_bot import constants
-# from ray_bot.chains import (
-#     ContextExtractorChain,
-#     RayBotQAChain,
-#     StatelessMemorySequentialChain,
-# )
-# from ray_bot.embeddings import EmbeddingModelSingleton
-# from ray_bot.handlers import CometLLMMonitoringHandler
-# from ray_bot.models import build_huggingface_pipeline
-# from ray_bot.qdrant import build_qdrant_client
-# from ray_bot.template import get_llm_template
+from ray_bot.chains import (
+    ContextExtractorChain,
+    RayBotQAChain,
+    StatelessMemorySequentialChain,
+)
+from ray_bot.embeddings import EmbeddingModelSingleton
+from ray_bot.handlers import CometLLMMonitoringHandler
+from ray_bot.models import build_huggingface_pipeline
+from ray_bot.qdrant import build_qdrant_client
+from ray_bot.template import get_llm_template
 
 logger = logging.getLogger(__name__)
 
